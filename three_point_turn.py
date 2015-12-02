@@ -154,7 +154,8 @@ class ThreePointTurn:
 
         while not self.killed and (datetime.now() < end_timeout):
             logging.info("mixing channels: {0} : {1}".format(throttle, steering))
-            self.drive.mix_channels_and_assign(throttle, steering)
+            # Had to invert throttle and steering channels to match RC mode
+            self.drive.mix_channels_and_assign(steering, throttle)
             time.sleep(0.05)
             pass
             # If we have a line sensor, check it here. Bail if necesary
