@@ -198,20 +198,18 @@ class launcher:
                     self.menu_item_selected()
                 elif not self.menu_button_pressed and (buttons_state & cwiid.BTN_UP):
                     # Decrement menu index
-                    logging.info("Menu item: {0}".format(self.menu[self.menu_state]))
                     self.menu_state = self.menu_state - 1
                     if self.menu_state < 0:
                         # Loop back to end of list
                         self.menu_state = len(self.menu)-1
-#                        logging.info(self.menu[self.menu_state])
+                    logging.info("Menu item: {0}".format(self.menu[self.menu_state]))
                 elif not self.menu_button_pressed and (buttons_state & cwiid.BTN_DOWN):
                     # Increment menu index
-                    logging.info("Menu item: {0}".format(self.menu[self.menu_state]))
                     self.menu_state = self.menu_state + 1
                     if self.menu_state >= len(self.menu):
                         # Loop back to start of list
                         self.menu_state = 0
-#                        logging.info(self.menu[self.menu_state])
+                    logging.info("Menu item: {0}".format(self.menu[self.menu_state]))
 
                 # Only change button state AFTER we have used it
                 self.menu_button_pressed = True
